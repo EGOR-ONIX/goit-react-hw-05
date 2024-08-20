@@ -10,11 +10,19 @@ import css from "./MovieCast.module.css";
 function MovieCast() {
   const { movieId } = useParams();
   const [currentMovieCast, setCurrentMovieCast] = useState([]);
+  const [notCast, setNotCast] = useState(false);
 
   useEffect(() => {
     async function fetchMovieCast() {
       try {
+        setNotCast(false);
         const movieCast = await getMovieCreditsById(movieId);
+
+        if (movieCast.length === 0) {
+          setNotCast(true);
+          return;
+        }
+
         setCurrentMovieCast(movieCast);
       } catch (error) {
         console.log(error);
@@ -23,7 +31,9 @@ function MovieCast() {
     fetchMovieCast();
   }, [movieId]);
 
-  return (
+  return notCast ? (
+    <h3 className={css["no-cast"]}>Unfortunately, there are no data!</h3>
+  ) : (
     <ul className={css["cast-list"]}>
       {currentMovieCast.map(
         ({ id, profile_path, original_name, character }) => (

@@ -9,15 +9,18 @@ import css from "./MovieReviews.module.css";
 function MovieReviews() {
   const { movieId } = useParams();
   const [currentMovieReviews, setCurrentMovieReviews] = useState([]);
+  const [notReviews, setNotReviews] = useState(false);
 
   useEffect(() => {
     async function fetchMovieReviews() {
       try {
+        setNotReviews(false);
         const movieReviews = await getMovieReviewsById(movieId);
 
-        // Рефакторінг, як помилку виводити???
-        if (movieReviews.length === 0)
-          return <h3 className={css["no-reviews"]}>No reviews!</h3>;
+        if (movieReviews.length === 0) {
+          setNotReviews(true);
+          return;
+        }
 
         setCurrentMovieReviews(movieReviews);
       } catch (error) {
@@ -27,7 +30,9 @@ function MovieReviews() {
     fetchMovieReviews();
   }, [movieId]);
 
-  return (
+  return notReviews ? (
+    <h3 className={css["no-reviews"]}>No reviews!</h3>
+  ) : (
     <>
       <ul className={css["reviews-list"]}>
         {currentMovieReviews.map(({ id, author, content }) => (

@@ -1,3 +1,10 @@
+.no-cast {
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: red;
+}
+
 .cast-list {
   display: flex;
   flex-wrap: wrap;

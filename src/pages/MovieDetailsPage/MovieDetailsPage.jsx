@@ -42,6 +42,8 @@ function MovieDetailsPage() {
   const { poster_path, original_title, vote_average, overview, genres } =
     currentMovie;
 
+  const genresStr = genres?.map((genre) => genre.name).join(", ");
+
   return (
     <>
       <Link to={backLinkHref.current} className={css["link-back"]}>
@@ -67,7 +69,11 @@ function MovieDetailsPage() {
             <p className={css.subtitle}>Overview</p>
             <p className={css.overview}>{overview}</p>
             <p className={css.subtitle}>Genres</p>
-            <p>{genres?.map((genre) => genre.name).join(", ")}</p>
+            <p>
+              {genresStr === ""
+                ? "Unfortunately, there are no data!"
+                : genresStr}
+            </p>
           </div>
         </div>
         <div>

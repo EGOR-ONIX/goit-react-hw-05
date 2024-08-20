@@ -1,6 +1,7 @@
 .no-reviews {
   font-size: 30px;
   text-align: center;
+  text-transform: uppercase;
   color: red;
 }
 
