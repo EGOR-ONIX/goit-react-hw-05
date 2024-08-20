@@ -1,0 +1,33 @@
+.cast-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.cast-item {
+  position: relative;
+
+  width: 250px;
+}
+
+.cast-item > img {
+  width: 100%;
+}
+
+.actor-description {
+  position: absolute;
+  bottom: 10px;
+
+  width: 100%;
+
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+
+  background-color: rgba(30, 31, 39, 0.6);
+}
+
+.actor-description > h3 {
+  color: #ffba00;
+}

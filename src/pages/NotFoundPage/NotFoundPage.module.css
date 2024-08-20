@@ -1,0 +1,31 @@
+.message {
+  margin-bottom: 10px;
+
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  color: red;
+}
+
+.link-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70px;
+  padding: 5px;
+  margin-right: auto;
+  margin-left: auto;
+
+  font-weight: 900;
+
+  background-color: transparent;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: background-color 120ms ease-in-out, color 120ms ease-in-out;
+}
+
+.link-home:hover {
+  background-color: #ffba00;
+  color: #1e1f27;
+}
